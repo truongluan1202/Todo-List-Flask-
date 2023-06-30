@@ -1,0 +1,42 @@
+<!-- this means it is exact same base.html and i can overwrite base.html -->
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- <form method = "POST">
+    <textarea name="note" id="note" class="form-control"></textarea>
+    <br />
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Add Note</button>
+    </div>
+</form> 
+-->
+
+<form method = "POST">
+    <div class="todo-app">
+        <h2>To-Do List <i class="fa fa-check"></i> </h2>
+        <div class="row">
+            <input name="note" type="text" id="input-box" placeholder="Add your text">
+            <button>Add</button>
+        </div>
+        <ul id="list-container">
+            <!-- <li class="checked">Task 1</li>
+            <li>Task 2</li>
+            <li>Task 3 </li> -->
+        </ul>
+        <ul class="list-group list-group-flush" id="notes">
+            <!-- notes in class User from models  -->
+            {% for note in user.notes %}
+            <li class="list-group-item">
+                {{ note.data }}
+                <!-- Javascript has a function delete-note  -->
+                <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</form>
+
+
+{% endblock %}
